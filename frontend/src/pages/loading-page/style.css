@@ -14,7 +14,7 @@
     transition: opacity 0.5s; /* Para una desaparición suave */
 }
 
-/* Contenedor para el logo y el círculo */
+/* Contenedor para el logo*/
 .loader-container {
     position: relative;
     width: 150px;
@@ -24,30 +24,6 @@
     align-items: center;
 }
 
-/* Estilos del círculo giratorio (Spinner) */
-.loader-circle {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* Lo convierte en un círculo perfecto */
-    
-    /* El truco del gradiente en el borde */
-    border: 8px solid transparent;
-    border-top-color: #6a82fb;   /* Color azul claro del gradiente */
-
-    /* Animación */
-    animation: spin 1.3s linear infinite;
-}
-
-/* Animación de rotación */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
 
 /* Animación de nube flotante */
 .loader-cloud {

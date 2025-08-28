@@ -19,41 +19,44 @@
     />
   </head>
   <body>
-    <header>
-      <img src="../../../public/img/white-logo.png" alt="Logo Riwipedia" />
-      <h2>Riwipedia</h2>
+    <header class="header">
+        <div class="logo">
+            <img src="../../../public/img/white-logo.png" alt="Riwipedia logo" style="width: 54px;">
+            <h3>Riwipedia</h3>
+        </div>
     </header>
     <main>
       <div class="main-banner">
-        <h1>Crea tu cuenta</h1>
-        <p>Registrate para acceder a contenido exclusivo</p>
+        <h1>Create your account</h1>
+        <p>Register to access exclusive content!</p>
       </div>
       <div class="form-div">
         <div class="signup-form">
           <form action="">
             <div class="form-field">
               <label for="fullname">Full Name</label>
-              <input type="text" />
+              <input type="text" placeholder="Santiago portillo"/>
             </div>
             <div class="form-field">
               <label for="email">Email Address</label>
-              <input type="email" />
+              <input type="email" placeholder="email@example.com"/>
             </div>
             <div class="form-field">
               <label for="password">Password</label>
-              <input type="text" />
+              <input type="text" placeholder="**********"/>
             </div>
             <div class="form-field">
               <label for="confirm-password">Confirm Password</label>
-              <input type="password" />
+              <input type="password" placeholder="**********"/>
             </div>
 
             <div class="confirm-policies">
               <input type="checkbox" id="miCheckbox" name="miOpcion" value="true">
               <label for="miCheckbox">I agree to the <span>Terms of Service</span> and<span> Privacy Policy.</span></label>
             </div>
+            
             <button type="submit">Create Account</button>
-            <p class="signup-already">Are you already signed up? <a href="">Login Here!</a></p>
+            <p class="signup-already">Are you already signed up? <a href="../login/login.html">Login Here!</a></p>
           </form>
         </div>
       </div>
