@@ -1,1 +1,172 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  background-image: linear-gradient(
+    to bottom,
+    #5f698a,
+    #4c546f,
+    #3b4054,
+    #292d3b,
+    #191b24
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  width: 54px;
+  height: 54px;
+  padding-left: 32px;
+}
+
+header h2 {
+  padding-left: 14px;
+  font-weight: 600;
+}
+
+main {
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  justify-self: center;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.main-banner {
+  width: 550px;
+  height: 150px;
+}
+
+.main-banner h1 {
+  width: 350px;
+  height: 70px;
+  font-size: 45px;
+  margin: 0px;
+  font-weight: 600;
+}
+
+.main-banner p {
+  width: 520px;
+  height: 75px;
+  font-size: 25px;
+  margin: 0px;
+}
+
+.form-div {
+  width: 385px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+}
+
+.form-field {
+  width:20rem;
+  height: 50px;
+  display: flex;
+  margin-bottom: 15px;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+input {
+  width: 292px;
+  height: 35px;
+  border-radius: 8px;
+  padding: 5px;
+  border: none; 
+  outline: none; 
+  background-color: white; 
+  padding: 10px; 
+}
+
+
+input:focus {
+  border: 1px solid #191b24;
+  background-color: lightyellow; 
+  box-shadow: #191b24 0px 0px 5px;
+}
+
+button {
+  width: 300px;
+  height: 45px;
+  font-size: 17px;
+  color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #432dd7;
+  background-color: #432dd7;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+
+.confirm-policies {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-bottom: 10px;
+}
+
+.confirm-policies p {
+  font-size: 10px;
+}
+
+span {
+  color: #432dd7;
+}
+
+a {
+  color: #432dd7;
+  text-decoration: none;
+}
+
+.signup-already {
+  text-align: center;
+  font-size: 11px;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
