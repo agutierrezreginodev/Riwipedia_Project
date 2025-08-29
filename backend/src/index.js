@@ -1,12 +1,12 @@
+
 import express from 'express'
 const router = express.Router()
 import { app } from "./database/conection_credentials.js"
 const PORT = 3001
 
-router.get('/user', async (req, res) => {
+router.get('/api/books', async (req, res) => {
   try {
-    const [books] = await db.execute('SELECT * FROM books');
-    res.json(books);
+      console.log("usserName");
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener libros' });
   }
