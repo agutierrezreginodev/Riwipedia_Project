@@ -32,22 +32,23 @@
       </div>
       <div class="form-div">
         <div class="signup-form">
-          <form action="">
+          <form action="" id="register_form">
             <div class="form-field">
               <label for="fullname">Full Name</label>
-              <input type="text" placeholder="Santiago portillo"/>
+              <input type="text" id="name">
             </div>
             <div class="form-field">
               <label for="email">Email Address</label>
-              <input type="email" placeholder="email@example.com"/>
+              <input type="email" placeholder="email@example.com" id="address">
             </div>
             <div class="form-field">
-              <label for="password">Password</label>
-              <input type="text" placeholder="**********"/>
+              <label for="password">Password
+              </label>
+              <input type="password" id="password">
             </div>
             <div class="form-field">
               <label for="confirm-password">Confirm Password</label>
-              <input type="password" placeholder="**********"/>
+              <input type="password" id="conf_pass">
             </div>
 
             <div class="confirm-policies">
@@ -65,4 +66,5 @@
       <p>&copy; 2025 Riwipedia. All rights reserved.</p>
     </footer>
   </body>
+  <script type="module" src="./register.js"></script>
 </html>
