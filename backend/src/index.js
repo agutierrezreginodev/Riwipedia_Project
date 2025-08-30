@@ -1,40 +1,43 @@
-// 1. Importar dependencias
+// 1. Import dependencies
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import endpoints from './routes/endpoints.js';
+import path from 'path';
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 
-// 2. Configurar servidor
+// 2. server cofiguration 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
 
-// 3. Conectar rutas
+
+
+// 3. routes conection
 app.use('/api', endpoints);
 
-// Ruta de prueba
+// test route
 app.get('/', (req, res) => {
-    res.json({ message: 'API de Biblioteca Online funcionando' });
+    res.json({ message: 'library API working' });
 });
 
-// Manejo de errores
+// Error targeting
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ 
         success: false, 
-        message: 'Error interno del servidor' 
+        message: 'Internal server error' 
     });
 });
 
-// Iniciar servidor
+// Server initilization
 app.listen(PORT, () => {
-    console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-    console.log(`📋 Rutas disponibles:`);
+    console.log(`✅ server running on http://localhost:${PORT}`);
+    console.log(`📋 Routes:`);
     console.log(`   - GET  http://localhost:${PORT}/api/test`);
     console.log(`   - POST http://localhost:${PORT}/api/register`);
     console.log(`   - POST http://localhost:${PORT}/api/login`);

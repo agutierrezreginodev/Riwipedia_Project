@@ -54,3 +54,56 @@ addBookForm.addEventListener("submit", (e) => {
   alert("Book added successfully!");
   closeModal();
 });
+
+async function fetchBooks() {
+  try {
+    const response = await fetch('http://localhost:3001/api/books');
+    if (!response.ok) throw new Error('Network response was not ok');
+    const result = await response.json();
+
+    if (!result.success) throw new Error(result.message);
+
+    const booksContainer = document.querySelector('.books');
+    booksContainer.innerHTML = '';
+
+    result.data.forEach(book => {
+      const div = document.createElement('div');
+      div.classList.add('book-item'); // optional, for styling
+
+      div.innerHTML = `
+        <h3>Book ID: ${book.id}</h3>
+        <img src="${book.portrait_url}" alt="Book Image" style="width:100px;" />
+        <p>Language: ${book.book_language}</p>
+        <p>Downloads: ${book.download_count}</p>
+        <p>Favorite: ${book.is_favorite ? 'Yes' : 'No'}</p>
+      `;
+      booksContainer.appendChild(div);
+    });
+  } catch (error) {
+    console.error('Error fetching books:', error);
+  }
+}
+
+fetchBooks();
+result.data.forEach(book => {
+  const div = document.createElement('div');
+  div.classList.add('book-item');
+  
+  // Normalize category for class use
+  const categoryClass = `category-${book.category?.replace(/\s+/g, '') || 'Unknown'}`;
+  
+  div.innerHTML = `
+  <img src="${book.portrait_url}" alt="Cover of ${book.title}" />
+  <h3 title="${book.title}">${book.title}</h3>
+  <p class="author" title="${book.author}">${book.author}</p>
+  <span class="category-label ${categoryClass}">${book.category || 'Uncategorized'}</span>
+  
+  <div class="icons">
+  <i class="fa-regular fa-heart favorite" title="Add to favorites"></i>
+      <i class="fa-solid fa-download download" title="Download book"></i>
+      </div>
+  `;
+
+  booksContainer.appendChild(div);
+});
+
