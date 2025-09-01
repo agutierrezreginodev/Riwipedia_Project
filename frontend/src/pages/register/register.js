@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     registerForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('address').value;
+        const name = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('conf_pass').value;
         
@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Usar publicPost para registro
             const response = await publicPost('http://localhost:3000/api/register', {
+                username: name,
                 email: email,
                 password: password
             });
