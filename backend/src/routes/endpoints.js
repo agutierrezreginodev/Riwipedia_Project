@@ -1,39 +1,26 @@
 import express from 'express';
-import { registerUser, loginUser,getAllBooks, insertBook, updateBook, deleteBook } from '../controllers/controllers.js';
+import { registerUser, loginUser } from '../controllers/controllers.js';
+import authenticateToken from '../middleware/auth.js';
+import { getBooks, addBook, deleteBook, toggleFavorite } from '../controllers/bookController.js';
 
 const router = express.Router();
 
-// register endpoint
+// Rutas públicas
 router.post('/register', registerUser);
-
-// login endpoint
 router.post('/login', loginUser);
+router.get('/test', (req, res) => {
+    res.json({ success: true, message: 'API funciona' });
+});
 
-//main endpoint for book recovery
-router.get('/books', getAllBooks);
+// Rutas de libros
+router.get('/books', authenticateToken, getBooks);
+router.post('/books', authenticateToken, addBook);
+router.post('/books/delete', authenticateToken, deleteBook);
+router.post('/books/favorite', authenticateToken, toggleFavorite);
 
-//endpoint for book uploading
-router.post('/books', insertBook);
-
-//endpoint for updating book information 
-router.put('/books/:id', updateBook);
-
-//endpoint for deleting book information
-router.delete('/books/:id', deleteBook);
-
-// Ruta de prueba de conexión
-router.get('/test', async (req, res) => {
-    try {
-        res.json({ 
-            success: true, 
-            message: 'Conection to the API' 
-        });
-    } catch (error) {
-        res.status(500).json({ 
-            success: false, 
-            message: 'Conection ERROR' 
-        });
-    }
+// Ruta de perfil
+router.get('/profile', authenticateToken, (req, res) => {
+    res.json({ success: true, user: req.user });
 });
 
 export default router;

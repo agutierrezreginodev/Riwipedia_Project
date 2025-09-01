@@ -13,6 +13,8 @@ body {
   min-height: 100vh;
 }
 
+/* ========== ESTILOS ORIGINALES (MANTENIDOS) ========== */
+
 /* Side navbar header styles */
 aside {
   position: fixed;
@@ -22,6 +24,7 @@ aside {
   left: 0;
   z-index: 1;
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .navbar-header {
@@ -48,6 +51,7 @@ aside li {
   display: flex;
   align-items: center;
   margin: 20px 0px;
+  cursor: pointer;
 }
 
 aside li:hover {
@@ -56,10 +60,17 @@ aside li:hover {
   border-radius: 8px;
 }
 
+aside li:hover i,
+aside li:hover a {
+  color: white;
+}
+
 aside i,
 a {
   margin-left: 10px;
   margin-right: 10px;
+  color: black;
+  transition: color 0.3s ease;
 }
 
 aside a {
@@ -67,7 +78,6 @@ aside a {
 }
 
 /* Dashboard header styles */
-
 header {
   margin-left: 256px;
   height: 75px;
@@ -75,11 +85,14 @@ header {
   align-items: center;
   justify-content: space-between;
   box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.05);
+  background: white;
+  padding: 0 20px;
 }
 
 header p {
   margin-left: 30px;
   margin-right: 30px;
+  font-weight: 500;
 }
 
 header button {
@@ -92,10 +105,13 @@ header button {
   background: linear-gradient(#0319df, #068bd8);
   color: white;
   font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 header button:hover {
   background: linear-gradient(to right, #068bd8, #0319df);
+  transform: translateY(-2px);
 }
 
 /* Dashboard indicators */
@@ -105,6 +121,9 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #f8f9fa;
+  min-height: calc(100vh - 75px);
+  padding: 20px;
 }
 
 .indicators {
@@ -126,10 +145,13 @@ main {
 
 .count-info p {
   font-size: 11px;
+  color: #7f8c8d;
 }
 
 .count-info h2 {
   font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .fa-book {
@@ -156,6 +178,7 @@ main {
   height: 41px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .book-image {
@@ -205,6 +228,11 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 20px 0;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .filters {
@@ -218,39 +246,274 @@ main {
   width: 240px;
   height: 33px;
   border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  font-family: "Poppins", sans-serif;
 }
 
-.categories-filter input {
+.categories-filter select {
   width: 126px;
   height: 33px;
   border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  font-family: "Poppins", sans-serif;
 }
 
-.sort input {
+.sort select {
   width: 126px;
   height: 33px;
   border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  font-family: "Poppins", sans-serif;
 }
 
 .add-book button {
   width: 126px;
   height: 33px;
   border-radius: 8px;
-  border-color: transparent;
+  border: none;
   background-color: #2ba60f;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 8px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.add-book .fa-book {
+.add-book button:hover {
+  background-color: #248a0c;
+  transform: translateY(-2px);
+}
+
+.add-book .fa-book, .add-book .fa-plus {
   color: white;
+  font-size: 12px;
 }
 
-/* Modal Styles */
+/* ========== NUEVOS ESTILOS (INTEGRADOS) ========== */
+
+/* Secciones SPA */
+.section {
+  display: none;
+  width: 100%;
+}
+
+.section.active {
+  display: block;
+}
+
+/* Grid de libros */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.book-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid #eaeaea;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.book-cover {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover img {
+  transform: scale(1.05);
+}
+
+.book-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.book-author {
+  color: #7f8c8d;
+  font-style: italic;
+  margin: 0.3rem 0;
+  font-size: 0.9em;
+}
+
+.book-category {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8em;
+  display: inline-block;
+  margin: 0.3rem 0;
+}
+
+.book-language {
+  color: #95a5a6;
+  font-size: 0.9em;
+  margin: 0.3rem 0;
+}
+
+.book-downloads {
+  color: #27ae60;
+  font-weight: 600;
+  font-size: 0.9em;
+  margin: 0.5rem 0;
+}
+
+.book-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Botones de acciones */
+.btn-download {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  flex: 1;
+  font-size: 0.8em;
+  transition: all 0.3s ease;
+}
+
+.btn-favorite {
+  background: #95a5a6;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  flex: 1;
+  font-size: 0.8em;
+  transition: all 0.3s ease;
+}
+
+.btn-delete {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  flex: 1;
+  font-size: 0.8em;
+  transition: all 0.3s ease;
+}
+
+.btn-download:hover, .btn-favorite:hover, .btn-delete:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Badge de favorito */
+.favorite-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Sección de perfil */
+.profile-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.profile-card h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.profile-info {
+  margin-top: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.label {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.value {
+  color: #7f8c8d;
+}
+
+.admin-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* Estados */
+.loading, .no-books {
+  text-align: center;
+  padding: 3rem;
+  color: #7f8c8d;
+  font-style: italic;
+  grid-column: 1 / -1;
+  font-family: "Nunito", sans-serif;
+}
+
+/* Modal Styles (Mantenidos) */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -420,3 +683,65 @@ main {
   background-color: #3a80d2;
 }
 
+/* Responsive */
+@media (max-width: 968px) {
+  .books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .indicators {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    height: auto;
+  }
+  
+  .counter {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  aside {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  header, main {
+    margin-left: 0;
+  }
+  
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filters {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .book-name-filter input,
+  .categories-filter select,
+  .sort select {
+    width: 100%;
+  }
+  
+  .options {
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+    width: 100%;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeIn 0.5s ease;
+}
