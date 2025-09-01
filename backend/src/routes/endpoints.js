@@ -5,20 +5,20 @@ import { getBooks, addBook, deleteBook, toggleFavorite } from '../controllers/bo
 
 const router = express.Router();
 
-// Rutas públicas
+// Public routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/test', (req, res) => {
-    res.json({ success: true, message: 'API funciona' });
+    res.json({ success: true, message: 'API is working' });
 });
 
-// Rutas de libros
+// Book routes
 router.get('/books', authenticateToken, getBooks);
 router.post('/books', authenticateToken, addBook);
 router.post('/books/delete', authenticateToken, deleteBook);
 router.post('/books/favorite', authenticateToken, toggleFavorite);
 
-// Ruta de perfil
+// Profile route
 router.get('/profile', authenticateToken, (req, res) => {
     res.json({ success: true, user: req.user });
 });

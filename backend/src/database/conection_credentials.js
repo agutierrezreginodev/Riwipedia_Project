@@ -22,3 +22,14 @@ const pool = mysql.createPool({
 const promisePool = pool.promise();
 export default promisePool
 
+/*async function testConnection() {
+    try {
+        const connection = await promisePool.getConnection();
+        console.log("Successful connection to the database");
+        connection.release();
+    } catch (error) {
+        console.error("Database connection error:", error);
+    }
+}
+
+testConnection();*/
