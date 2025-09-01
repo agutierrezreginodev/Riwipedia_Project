@@ -15,7 +15,10 @@
     <meta name="title" content="Riwipedia">
     <meta name="description" content="Esta es tu biblioteca digital Explora, aprende y transforma tu mundo!">
     <!-- Style CSS-->
-    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="./index.css">
+
+    <!-- Auth JS-->
+     <script src="/frontend/src/utils/auth.js"></script>
 
     <!-- GOOGLE FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +30,7 @@
     <main class="main">
         <header class="header">
             <div class="navbar">
-                <a class="logo" href="./home.html" style="text-decoration: none;">
+                <a class="logo" href="/index.html" style="text-decoration: none;">
                     <img src="./frontend/public/img/logo64px.png" alt="Riwipedia logo" style="width: 54px;">
                     <h3>Riwi<span>pedia</span></h3>
                 </a>
@@ -39,7 +42,7 @@
                         <li><a href="#about" class="nav-item">About</a></li>
                     </ul>
                 </nav>
-                <button id="sign-in" class="sign-in" onclick="window.location.href='./frontend/src/pages/loading-page/loading-page.html'">Sign in</button>
+                <button id="sign-in" class="sign-in" onclick="window.location.href='./frontend/src/pages/login/login.html'">Sign in</button>
             </div>
         </header>
         <section id="home" class="section-home">
@@ -125,7 +128,7 @@
         </section>
         <footer class="footer"></footer>
     </main>
-    <script type="module" src="./home.js"></script>
+    <script type="module" src="./index.js"></script>
 </body>
 
 </html>

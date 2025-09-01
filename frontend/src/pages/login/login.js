@@ -1,5 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Redirigir si ya está autenticado
+    if (isAuthenticated()) {
+        window.location.href = '../dashboard/dashboard.html';
+        return;
+    }
+
     const loginForm = document.getElementById('login-form');
+    
+    if (!loginForm) {
+        console.error('❌ No se encontró el formulario de login');
+        return;
+    }
+    
+    // Eliminar action y method para evitar recarga
+    loginForm.removeAttribute('action');
+    loginForm.removeAttribute('method');
     
     loginForm.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -14,12 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
+            // Usar publicPost en lugar de fetch directo
+            const response = await publicPost('http://localhost:3000/api/login', {
+                email: email,
+                password: password
             });
             
             const data = await response.json();
@@ -39,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showModal('Error', data.message);
             }
         } catch (error) {
+            console.error('Error en login:', error);
             showModal('Error', 'Error de conexión con el servidor');
         }
     });
