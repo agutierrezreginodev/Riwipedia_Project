@@ -324,19 +324,26 @@ async function toggleFavorite(bookId) {
 async function deleteBook(bookId) {
     if (!confirm('¿Estás seguro de que quieres eliminar este libro?')) return;
     
-    try {
-        const response = await authPost('http://localhost:3000/api/books/delete', { bookId });
-        const data = await response.json();
+        try {
+            const response = await fetch(`http://localhost:3000/api/books/delete`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({ bookId })
+            });
+            const data = await response.json();
         
-        if (data.success) {
-            showModal('Éxito', 'Libro eliminado correctamente');
-            await loadBooks(); // Recargar libros
-        } else {
-            showModal('Error', data.message || 'Error al eliminar el libro');
+            if (data.success) {
+                showModal('Éxito', 'Libro eliminado correctamente');
+                await loadBooks(); // Recargar libros
+            } else {
+                showModal('Error', data.message || 'Error al eliminar el libro');
+            }
+        } catch (error) {
+            showModal('Error', 'Error al eliminar el libro');
         }
-    } catch (error) {
-        showModal('Error', 'Error al eliminar el libro');
-    }
 }
 
 // Cargar favoritos
