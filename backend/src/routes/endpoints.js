@@ -15,7 +15,7 @@ router.get('/test', (req, res) => {
 // Rutas de libros
 router.get('/books', authenticateToken, getBooks);
 router.post('/books', authenticateToken, addBook);
-router.post('/books/delete', authenticateToken, deleteBook);
+router.delete('/books/delete', authenticateToken, deleteBook);
 router.post('/books/favorite', authenticateToken, toggleFavorite);
 
 // Ruta de perfil
